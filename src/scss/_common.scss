@@ -1,11 +1,10 @@
 body {
-  color: var(--color-black);
+  color: var(--0e1d0e);
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 16px;
   line-height: 120%;
   padding: 0px 0px 0px 0px !important;
-  background: #f7f2ee;
   &.hide-scrollbar {
     margin: 0px 0px 0px 0px !important;
   }
@@ -49,96 +48,109 @@ a {
 }
 
 .btn {
-  font-family: var(--second-family);
+  white-space: nowrap;
   width: fit-content;
+  border-radius: 10px;
+  background-color: var(--02642b);
+  min-height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 143%;
+  color: var(--ffffff);
   text-align: center;
-  border-radius: 4px;
-  font-weight: 400;
-  font-size: clamp(12px, 1.2vw, 22px);
-  line-height: 120%;
-  color: var(--color-golden);
-  min-height: clamp(30px, 35px, 35px);
-  border: 2px solid var(--color-golden);
-  padding: clamp(6px, 0.5vw, 9px) clamp(20px, 2.4vw, 44px);
-  gap: clamp(10px, 1vw, 18px);
-  transition:
-    background-color 0.3s,
-    color 0.3s,
-    border 0.3s;
-
+  gap: 12px;
+  padding: 10px 25px;
+  gap: 10px;
+  transition: opacity 0.3s;
   &:hover {
-    color: var(--color-black);
-    background-color: var(--color-golden);
+    opacity: 0.7;
   }
-
-  img {
-    width: clamp(15px, 2.6vw, 47px);
-    height: auto;
-    flex: 0 0 clamp(15px, 2.6vw, 47px);
+  &.btn-big {
+    font-size: 16px;
+    line-height: 125%;
+    min-height: 60px;
+    @media (max-width: 768px) {
+      font-size: 14px;
+      min-height: 50px;
+    }
   }
   &.btn-border {
-    font-weight: 700;
-    border: 2px solid var(--color-black);
-    color: var(--color-black);
-    padding: clamp(10px, 0.5vw, 9px) clamp(20px, 1.5vw, 27px);
-    font-size: clamp(12px, 1vw, 18px);
-    border-radius: 8px;
-    &:hover {
-      color: #fff;
-      background-color: var(--color-black);
+    gap: 8px;
+    min-height: 40px;
+    color: var(--02642b);
+    background-color: var(--ffffff);
+    border: 1px solid var(--02642b);
+    svg {
+      fill: #1f8213;
+      margin-top: 1px;
     }
   }
-  &.btn-blue {
-    background-color: var(--color-black);
-    transition: opacity 0.3s;
-    border: 1px solid transparent;
-    color: #fff;
-    border-radius: 8px;
-    font-size: clamp(12px, 1.5vw, 27px);
-    padding: clamp(15px, 1.7vw, 31px) clamp(20px, 2vw, 36px);
-    width: clamp(fit-content, 23vw, 419px);
-    gap: clamp(10px, 1.5vw, 27px);
-
-    &:hover {
-      opacity: 0.7;
-    }
-  }
-
-  &.btn-big {
-    padding: clamp(10px, 1vw, 18px) clamp(20px, 3.7vw, 67px) clamp(10px, 1vw, 18px) clamp(20px, 2vw, 36px);
-    font-size: clamp(12px, 1.4vw, 26px);
-    gap: clamp(10px, 1.5vw, 27px);
-    transition: opacity 0.3s;
-
-    &:hover {
-      opacity: 0.7;
-      background-color: transparent;
-      color: var(--color-golden);
-    }
+  svg {
+    margin-top: 3px;
+    fill: var(--ffffff);
   }
 }
 
 .title1 {
-  font-family: var(--second-family);
   font-weight: 700;
-  font-size: clamp(32px, 4.5vw, 82px);
+  font-size: 40px;
   line-height: 120%;
-  color: #fff;
-
-  span {
-    background: linear-gradient(135deg, #f0c380 0%, #f0c380 40%, #f0c380 70%, #fdde8f 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  text-transform: uppercase;
+  @media (max-width: 768px) {
+    font-size: 26px;
+    line-height: 123%;
   }
 }
 
 .title2 {
-  font-family: var(--second-family);
   font-weight: 700;
-  font-size: clamp(32px, 4.5vw, 82px);
-  line-height: 100%;
+  font-size: 36px;
+  line-height: 133%;
+  @media (max-width: 768px) {
+    font-size: 30px;
+    line-height: 120%;
+  }
+  span {
+    color: var(--02642b);
+  }
+}
+
+.heading-complex {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+  p {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 150%;
+    @media (max-width: 768px) {
+      font-size: 16px;
+      line-height: 150%;
+      margin-top: -5px;
+    }
+  }
+  // .heading-complex__line
+
+  &__line {
+    width: 130px;
+    border: 2px solid var(--02642b);
+  }
+}
+
+.icon-check {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  border: 1px solid #dae5df;
+  border-radius: 50%;
+  background: var(--ffffff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    fill: var(--02642b);
+  }
 }
