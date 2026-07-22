@@ -1,3 +1,4 @@
+
 .popup {
     position: fixed;
     top: 0;
@@ -45,34 +46,39 @@
     transform: scale(0);
     transition: transform 0.3s ease 0s;
     width: 100%;
-    border-radius: 10px;
-    background: var(--ffffff);
-    box-shadow: 0 5px 60px 0 rgba(14, 29, 14, 0.12);
+    background: #fff;
     overflow: hidden;
-    max-width: 410px;
-    padding: 38px 50px 42px 50px;
-    @media (max-width: 768px) {
-        padding: 35px 20px 30px 20px;
-    }
+    max-width: 496px;
+    border-radius: 30px;
+    background: var(--ffffff);
+    box-shadow: -10px 20px 40px 0 rgba(17, 24, 37, 0.1);
+    padding: 43px 40px 50px 40px;
     .lock & {
         visibility: visible;
+    }
+    @media (max-width: 550px) {
+        padding: 40px 20px 40px 20px;
     }
 }
 
 .popup__close {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 12px;
+    right: 15px;
     cursor: pointer;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f4f3ef;
-    border-radius: 50%;
+    background-color: var(--326045);
     svg {
-        fill: var(--0e1d0e);
+        fill: var(--ffffff);
+    }
+    transition: opacity 0.3s;
+    &:hover {
+        opacity: 0.7;
     }
 }
 
@@ -82,43 +88,24 @@
     &__body {
         display: flex;
         flex-direction: column;
-        gap: 20px;
-        @media (max-width: 768px) {
-            gap: 15px;
-        }
+        gap: 30px;
     }
 
     // .popup-forms__top
 
     &__top {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        @media (max-width: 768px) {
-            gap: 8px;
-        }
-        p {
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 143%;
-            text-align: center;
-            color: rgba(14, 29, 14, 0.8);
-            @media (max-width: 768px) {
-                font-size: 12px;
-            }
-        }
     }
 
     // .popup-forms__title
 
     &__title {
-        font-weight: 700;
+        font-weight: 300;
         font-size: 36px;
-        line-height: 111%;
+        line-height: 122%;
         text-align: center;
-        @media (max-width: 768px) {
-            font-size: 28px;
+        @media (max-width: 550px) {
+            font-size: 32px;
+            line-height: 119%;
         }
     }
 }
