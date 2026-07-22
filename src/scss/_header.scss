@@ -3,8 +3,15 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: var(--ffffff);
+    background-color: transparent;
     z-index: 100;
+    transition: background-color 0.3s;
+    &._header-scroll {
+        background-color: var(--ffffff);
+    }
+    .menu-open & {
+        background-color: var(--ffffff);
+    }
     // .header__content
 
     &__content {

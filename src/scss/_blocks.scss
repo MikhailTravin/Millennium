@@ -1,0 +1,113 @@
+.block-intro {
+    position: relative;
+    background: linear-gradient(
+        360deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.08) 80.46%,
+        rgba(255, 255, 255, 0.72) 89.46%,
+        rgba(255, 255, 255, 0.8) 100%
+    );
+    // .block-intro__content
+
+    &__content {
+        position: relative;
+        z-index: 15;
+        display: flex;
+        padding: 26px 0px 60px 0px;
+    }
+
+    // .block-intro__body
+
+    &__body {
+        flex: 0 1 600px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            li {
+                display: flex;
+                gap: 20px;
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 167%;
+            }
+        }
+    }
+
+    // .block-intro__titles
+
+    &__titles {
+        display: flex;
+        flex-direction: column;
+        gap: 23px;
+        p {
+            max-width: 511px;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 150%;
+        }
+    }
+
+    // .block-intro__icon
+
+    &__icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 26px;
+        height: 26px;
+        flex: 0 0 26px;
+        svg {
+            fill: var(--02642b);
+        }
+    }
+
+    // .block-intro__bg1
+
+    &__bg1 {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 60%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+.block-intro-test {
+    margin-top: 15px;
+    // .block-intro-test__body
+
+    &__body {
+    }
+}
+.block-intro-descr {
+    // .block-intro-descr__top
+
+    &__top {
+    }
+
+    // .block-intro-descr__title
+
+    &__title {
+    }
+
+    // .block-intro-descr__data
+
+    &__data {
+    }
+
+    // .block-intro-descr__number
+
+    &__number {
+    }
+
+    // .block-intro-descr__text
+
+    &__text {
+    }
+}
+.block-descr-list {
+}
