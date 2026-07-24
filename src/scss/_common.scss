@@ -68,15 +68,6 @@ a {
   &:hover {
     opacity: 0.7;
   }
-  &.btn-big {
-    font-size: 16px;
-    line-height: 125%;
-    min-height: 60px;
-    @media (max-width: 768px) {
-      font-size: 14px;
-      min-height: 50px;
-    }
-  }
   &.btn-border {
     gap: 8px;
     min-height: 40px;
@@ -86,6 +77,21 @@ a {
     svg {
       fill: #1f8213;
       margin-top: 1px;
+    }
+  }
+  &.btn-big {
+    font-size: 16px;
+    line-height: 125%;
+    min-height: 60px;
+    &.btn-border {
+      gap: 12px;
+      svg {
+        margin-top: 3px;
+      }
+    }
+    @media (max-width: 768px) {
+      font-size: 14px;
+      min-height: 50px;
     }
   }
   svg {
