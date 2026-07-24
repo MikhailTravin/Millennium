@@ -603,19 +603,54 @@ function formSubmit() {
       formValidate.formClean(form);
     }
 
+    const popupSelector = form.dataset.popupMessage;
+    let popup = null;
+
+    if (popupSelector) {
+      if (popupSelector.startsWith('#')) {
+        popup = document.querySelector(popupSelector);
+      } else {
+        popup = document.querySelector(`[data-popup="${popupSelector}"]`) ||
+          document.querySelector(`.${popupSelector.replace('.', '')}`);
+      }
+    }
+
     document.querySelectorAll('.popup_show').forEach(p => {
       p.classList.remove('popup_show');
       p.setAttribute('aria-hidden', 'true');
     });
 
-    document.documentElement.classList.remove('lock', 'popup-show');
-    if (typeof bodyUnlock === 'function') {
-      bodyUnlock();
-    }
+    if (popup) {
+      if (typeof popupOpen === 'function') {
+        popupOpen(popupSelector);
+      }
+      else if (typeof openPopup === 'function') {
+        openPopup(popup);
+      }
+      else {
+        popup.classList.add('popup_show');
+        popup.setAttribute('aria-hidden', 'false');
 
-    window.location.href = 'thanks.html';
+        document.documentElement.classList.add('lock', 'popup-show');
+
+        if (typeof bodyLock === 'function') {
+          bodyLock();
+        } else if (typeof bodyLockToggle === 'function') {
+          bodyLockToggle();
+        } else {
+          document.body.style.overflow = 'hidden';
+          document.body.style.paddingRight = '17px';
+        }
+      }
+
+      document.documentElement.classList.remove('open-quiz');
+    } else {
+      console.warn('Попап не найден, перенаправление на thanks.html');
+      window.location.href = 'thanks.html';
+    }
   }
 }
+
 formSubmit();
 
 //========================================================================================================================================================
@@ -937,8 +972,8 @@ if (map) {
 
 //========================================================================================================================================================
 
-if (document.querySelector('.block-benefits__slider')) {
-  const benefitsSwiper = new Swiper('.block-benefits__slider', {
+if (document.querySelector('.block-descr__slider')) {
+  const descrSwiper = new Swiper('.block-descr__slider', {
     observer: true,
     observeParents: true,
     slidesPerView: 1,
@@ -946,11 +981,11 @@ if (document.querySelector('.block-benefits__slider')) {
     speed: 400,
     preloadImages: true,
     navigation: {
-      prevEl: '.benefits-arrow-prev',
-      nextEl: '.benefits-arrow-next',
+      prevEl: '.descr-arrow-prev',
+      nextEl: '.descr-arrow-next',
     },
     pagination: {
-      el: '.benefits-pagination',
+      el: '.descr-pagination',
       clickable: true,
     },
   });
@@ -1135,3 +1170,710 @@ spollers();
 window.addEventListener('resize', function () {
   spollers();
 });
+
+//========================================================================================================================================================
+
+console.log('🚀 Запуск инициализации квизов');
+
+// Код квиза с поддержкой нескольких экземпляров и управлением через кнопки
+document.querySelectorAll('.block-quiz-steps__slider').forEach((sliderElement, index) => {
+  console.log(`📌 Инициализация квиза #${index + 1}`);
+
+  let swiperQuiz = null;
+  let selectedAnswers = [];
+  let timerInterval = null;
+  let timerSeconds = 120;
+  let isQuizCompleted = false;
+
+  // Определяем количество вопросов для каждого квиза
+  const totalQuestions = index === 0 ? 5 : 4;
+  console.log(`📊 Квиз #${index + 1}: ${totalQuestions} вопросов`);
+
+  // Находим родительский блок квиза
+  const quizBlock = sliderElement.closest('.block-quiz');
+  console.log(`🔍 Квиз #${index + 1}: найден блок`, quizBlock);
+
+  if (!quizBlock) {
+    console.error(`❌ Квиз #${index + 1}: не найден родительский блок .block-quiz`);
+    return;
+  }
+
+  // Функция для проверки наличия кнопки btn-next в слайде
+  function hasNextButton(slide) {
+    return slide.querySelector('.btn-next') !== null;
+  }
+
+  // Функция для обновления номера вопроса и текста
+  function updateQuestionInfo() {
+    if (!swiperQuiz) {
+      console.log(`⚠️ Квиз #${index + 1}: updateQuestionInfo - swiperQuiz не инициализирован`);
+      return;
+    }
+
+    const currentSlideIndex = swiperQuiz.activeIndex;
+    console.log(`📝 Квиз #${index + 1}: updateQuestionInfo - текущий слайд: ${currentSlideIndex}`);
+
+    const questionNumberSpan = quizBlock.querySelector('.block-quiz-steps__questions-text span');
+
+    if (questionNumberSpan) {
+      if (currentSlideIndex === totalQuestions) {
+        questionNumberSpan.textContent = totalQuestions;
+        console.log(`📝 Квиз #${index + 1}: установлен номер вопроса: ${totalQuestions} (финальный)`);
+      } else {
+        questionNumberSpan.textContent = currentSlideIndex + 1;
+        console.log(`📝 Квиз #${index + 1}: установлен номер вопроса: ${currentSlideIndex + 1}`);
+      }
+    } else {
+      console.log(`⚠️ Квиз #${index + 1}: questionNumberSpan не найден`);
+    }
+  }
+
+  // Функция для обновления прогресс-бара
+  function updateProgressBar() {
+    if (!swiperQuiz) {
+      console.log(`⚠️ Квиз #${index + 1}: updateProgressBar - swiperQuiz не инициализирован`);
+      return;
+    }
+
+    const currentSlideIndex = swiperQuiz.activeIndex;
+    console.log(`📊 Квиз #${index + 1}: updateProgressBar - текущий слайд: ${currentSlideIndex}`);
+
+    const pagination = quizBlock.querySelector('.swiper-pagination-progressbar');
+
+    if (pagination) {
+      const progressFill = pagination.querySelector('.swiper-pagination-progressbar-fill');
+      if (progressFill) {
+        let widthPercentage;
+
+        if (currentSlideIndex === 0) {
+          widthPercentage = 20;
+        } else if (currentSlideIndex === totalQuestions) {
+          widthPercentage = 100;
+        } else {
+          widthPercentage = ((currentSlideIndex + 1) / totalQuestions) * 100;
+        }
+
+        widthPercentage = Math.max(20, Math.min(100, widthPercentage));
+
+        console.log(`📊 Квиз #${index + 1}: установка прогресса ${widthPercentage}%`);
+
+        progressFill.style.transition = 'width 0.3s ease, transform 0.3s ease';
+        progressFill.style.width = `${widthPercentage}%`;
+        progressFill.style.transform = `translate3d(0px, 0px, 0px) scaleX(${widthPercentage / 100}) scaleY(1)`;
+      } else {
+        console.log(`⚠️ Квиз #${index + 1}: progressFill не найден`);
+      }
+    } else {
+      console.log(`⚠️ Квиз #${index + 1}: pagination не найден`);
+    }
+  }
+
+  // Функция для восстановления выбранных ответов
+  function restoreSelectedAnswers() {
+    if (!swiperQuiz) {
+      console.log(`⚠️ Квиз #${index + 1}: restoreSelectedAnswers - swiperQuiz не инициализирован`);
+      return;
+    }
+
+    const currentSlideIndex = swiperQuiz.activeIndex;
+    console.log(`🔄 Квиз #${index + 1}: restoreSelectedAnswers - слайд ${currentSlideIndex}`);
+
+    const slides = quizBlock.querySelectorAll('.block-quiz-steps__slide');
+
+    if (currentSlideIndex === totalQuestions) {
+      console.log(`🔄 Квиз #${index + 1}: финальный слайд, пропускаем восстановление`);
+      return;
+    }
+
+    const slide = slides[currentSlideIndex];
+    if (!slide) {
+      console.log(`⚠️ Квиз #${index + 1}: слайд ${currentSlideIndex} не найден`);
+      return;
+    }
+
+    // Проверяем все типы опций
+    const hasOptions1 = slide.querySelector('.options1__item');
+    const hasOptions2 = slide.querySelector('.options2__item');
+    const hasOptions3 = slide.querySelector('.options3__item');
+
+    let allOptions;
+    if (hasOptions1) {
+      allOptions = slide.querySelectorAll('.options1__item');
+      console.log(`🔄 Квиз #${index + 1}: найдены options1 (${allOptions.length} шт)`);
+    } else if (hasOptions2) {
+      allOptions = slide.querySelectorAll('.options2__item');
+      console.log(`🔄 Квиз #${index + 1}: найдены options2 (${allOptions.length} шт)`);
+    } else if (hasOptions3) {
+      allOptions = slide.querySelectorAll('.options3__item');
+      console.log(`🔄 Квиз #${index + 1}: найдены options3 (${allOptions.length} шт)`);
+    } else {
+      console.log(`⚠️ Квиз #${index + 1}: опции не найдены на слайде ${currentSlideIndex}`);
+      return;
+    }
+
+    // Сбрасываем все опции
+    allOptions.forEach(opt => {
+      const input = opt.querySelector('input[type="radio"]');
+      if (input) {
+        input.checked = false;
+      }
+      opt.classList.remove('active');
+    });
+
+    // Восстанавливаем сохраненный ответ
+    if (selectedAnswers[currentSlideIndex]) {
+      const savedAnswer = selectedAnswers[currentSlideIndex].answer;
+      console.log(`🔄 Квиз #${index + 1}: восстанавливаем ответ: "${savedAnswer}"`);
+
+      allOptions.forEach(option => {
+        let textElement;
+        if (hasOptions1) {
+          textElement = option.querySelector('.options1__title');
+        } else if (hasOptions2) {
+          textElement = option.querySelector('.options2__text');
+        } else if (hasOptions3) {
+          textElement = option.querySelector('.options3__text');
+        }
+
+        if (textElement) {
+          const optionText = textElement.textContent.trim();
+          if (optionText === savedAnswer) {
+            console.log(`🔄 Квиз #${index + 1}: найден совпадающий вариант: "${optionText}"`);
+            const input = option.querySelector('input[type="radio"]');
+            if (input) {
+              input.checked = true;
+            }
+            option.classList.add('active');
+          }
+        }
+      });
+    } else {
+      console.log(`🔄 Квиз #${index + 1}: нет сохраненного ответа для слайда ${currentSlideIndex}`);
+    }
+
+    if (currentSlideIndex !== 0 && currentSlideIndex !== totalQuestions) {
+      updateNextButtonState(currentSlideIndex);
+    }
+  }
+
+  // Функция для обновления состояния кнопки "Далее"
+  function updateNextButtonState(slideIndex) {
+    console.log(`🔘 Квиз #${index + 1}: updateNextButtonState - слайд ${slideIndex}`);
+
+    const slides = quizBlock.querySelectorAll('.block-quiz-steps__slide');
+    const slide = slides[slideIndex];
+    if (!slide) {
+      console.log(`⚠️ Квиз #${index + 1}: слайд ${slideIndex} не найден`);
+      return;
+    }
+
+    const nextBtn = slide.querySelector('.btn-next');
+    if (!nextBtn) {
+      console.log(`ℹ️ Квиз #${index + 1}: кнопка btn-next не найдена на слайде ${slideIndex} (переход будет автоматическим)`);
+      return;
+    }
+
+    const hasAnswer = selectedAnswers[slideIndex] !== undefined;
+    console.log(`🔘 Квиз #${index + 1}: ответ выбран: ${hasAnswer}`);
+
+    if (hasAnswer) {
+      nextBtn.removeAttribute('disabled');
+      nextBtn.style.opacity = '1';
+      nextBtn.style.pointerEvents = 'auto';
+      nextBtn.classList.add('active');
+      console.log(`🔘 Квиз #${index + 1}: кнопка активирована`);
+    } else {
+      nextBtn.setAttribute('disabled', 'disabled');
+      nextBtn.style.opacity = '0.5';
+      nextBtn.style.pointerEvents = 'none';
+      nextBtn.classList.remove('active');
+      console.log(`🔘 Квиз #${index + 1}: кнопка деактивирована`);
+    }
+  }
+
+  // Функция для перехода на следующий слайд (с проверкой)
+  function goToNextSlide() {
+    if (!swiperQuiz) return;
+
+    const currentSlideIndex = swiperQuiz.activeIndex;
+    const slides = quizBlock.querySelectorAll('.block-quiz-steps__slide');
+
+    if (currentSlideIndex < slides.length - 1) {
+      swiperQuiz.slideNext();
+      console.log(`➡️ Квиз #${index + 1}: переход на следующий слайд`);
+      return true;
+    }
+    return false;
+  }
+
+  // Функция для обработки выбора опции
+  function handleOptionSelection(slideIndex, answerText, optionElement) {
+    console.log(`📝 Квиз #${index + 1}: обработка выбора опции на слайде ${slideIndex}`);
+
+    const slides = quizBlock.querySelectorAll('.block-quiz-steps__slide');
+    const slide = slides[slideIndex];
+    const questionTitle = slide.querySelector('.block-quiz-steps__title')?.textContent || `Вопрос ${slideIndex + 1}`;
+
+    // Сохраняем ответ
+    selectedAnswers[slideIndex] = {
+      question: questionTitle,
+      answer: answerText
+    };
+    console.log(`📝 Квиз #${index + 1}: сохранен ответ для слайда ${slideIndex}: "${answerText}"`);
+
+    // Активируем опцию
+    const allOptions = slide.querySelectorAll('.options1__item, .options2__item, .options3__item');
+    allOptions.forEach(opt => {
+      opt.classList.remove('active');
+      const input = opt.querySelector('input[type="radio"]');
+      if (input) {
+        input.checked = false;
+      }
+    });
+
+    optionElement.classList.add('active');
+    const radioInput = optionElement.querySelector('input[type="radio"]');
+    if (radioInput) {
+      radioInput.checked = true;
+    }
+
+    // Проверяем наличие кнопки btn-next в слайде
+    const hasBtn = hasNextButton(slide);
+    console.log(`🔍 Квиз #${index + 1}: наличие btn-next в слайде: ${hasBtn}`);
+
+    if (hasBtn) {
+      // Если есть кнопка - активируем её, переход только по клику
+      console.log(`🔘 Квиз #${index + 1}: есть кнопка - активируем, ждем клика`);
+      updateNextButtonState(slideIndex);
+    } else {
+      // Если нет кнопки - автоматический переход
+      console.log(`🚀 Квиз #${index + 1}: нет кнопки - автоматический переход`);
+      setTimeout(() => {
+        goToNextSlide();
+      }, 400);
+    }
+  }
+
+  // Таймер
+  function startTimer() {
+    if (timerInterval) {
+      console.log(`⏱️ Квиз #${index + 1}: таймер уже запущен`);
+      return;
+    }
+
+    console.log(`⏱️ Квиз #${index + 1}: запуск таймера`);
+    timerSeconds = 120;
+
+    const timeElement = quizBlock.querySelector('.block-quiz-steps__time');
+    if (timeElement) {
+      timeElement.textContent = '2 минуты';
+    }
+
+    timerInterval = setInterval(() => {
+      timerSeconds--;
+      const minutes = Math.floor(timerSeconds / 60);
+      const seconds = timerSeconds % 60;
+
+      const timeElement = quizBlock.querySelector('.block-quiz-steps__time');
+      if (timeElement) {
+        timeElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+      }
+
+      if (timerSeconds <= 0) {
+        console.log(`⏱️ Квиз #${index + 1}: время вышло!`);
+        stopTimer();
+        alert('Время вышло!');
+      }
+    }, 1000);
+  }
+
+  function stopTimer() {
+    if (timerInterval) {
+      console.log(`⏱️ Квиз #${index + 1}: остановка таймера`);
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+  }
+
+  function resetTimer() {
+    console.log(`⏱️ Квиз #${index + 1}: сброс таймера`);
+    timerSeconds = 120;
+    const timeElement = quizBlock.querySelector('.block-quiz-steps__time');
+    if (timeElement) {
+      timeElement.textContent = '2 минуты';
+    }
+  }
+
+  // Проверяем наличие элементов перед инициализацией Swiper
+  console.log(`🔍 Квиз #${index + 1}: проверка элементов`);
+  const paginationEl = quizBlock.querySelector('.block-quiz-steps__pagination');
+  console.log(`  - pagination: ${paginationEl ? 'найден' : 'НЕ НАЙДЕН'}`);
+
+  // Инициализация Swiper
+  console.log(`🔄 Квиз #${index + 1}: инициализация Swiper`);
+
+  swiperQuiz = new Swiper(sliderElement, {
+    observer: true,
+    observeParents: true,
+    slidesPerView: 1,
+    spaceBetween: 0,
+    speed: 200,
+    allowTouchMove: false,
+    simulateTouch: false,
+    initialSlide: 0,
+    pagination: {
+      el: paginationEl,
+      type: 'progressbar',
+      clickable: false,
+    },
+    on: {
+      slideChange: function () {
+        console.log(`🔄 Квиз #${index + 1}: slideChange - переход на слайд ${this.activeIndex}`);
+        updateQuestionInfo();
+        restoreSelectedAnswers();
+
+        setTimeout(() => {
+          updateProgressBar();
+        }, 50);
+
+        if (this.activeIndex === totalQuestions) {
+          if (!isQuizCompleted) {
+            console.log(`🔄 Квиз #${index + 1}: достигнут финальный слайд, запуск таймера`);
+            startTimer();
+          }
+        } else {
+          stopTimer();
+          resetTimer();
+        }
+      },
+      init: function () {
+        console.log(`✅ Квиз #${index + 1}: Swiper инициализирован`);
+        updateQuestionInfo();
+
+        setTimeout(() => {
+          const progressFill = quizBlock.querySelector('.swiper-pagination-progressbar-fill');
+          if (progressFill) {
+            console.log(`📊 Квиз #${index + 1}: установка начального прогресса 20%`);
+            progressFill.style.transition = 'none';
+            progressFill.style.width = '20%';
+            progressFill.style.transform = 'translate3d(0px, 0px, 0px) scaleX(0.2) scaleY(1)';
+
+            setTimeout(() => {
+              progressFill.style.transition = 'width 0.3s ease, transform 0.3s ease';
+            }, 50);
+          } else {
+            console.log(`⚠️ Квиз #${index + 1}: progressFill не найден при инициализации`);
+          }
+        }, 100);
+
+        setTimeout(() => {
+          restoreSelectedAnswers();
+        }, 200);
+      }
+    }
+  });
+
+  console.log(`✅ Квиз #${index + 1}: Swiper создан`);
+
+  // Блокируем клик по слайду - переход только через кнопки
+  sliderElement.addEventListener('click', function (e) {
+    const target = e.target;
+    const isButton = target.closest('.btn-next') || target.closest('.btn-back') || target.closest('.btn-send');
+    const isOption = target.closest('.options1__item') || target.closest('.options2__item') || target.closest('.options3__item');
+
+    // Если клик не по кнопке и не по опции - блокируем
+    if (!isButton && !isOption) {
+      console.log(`🚫 Квиз #${index + 1}: клик заблокирован (не по кнопке или опции)`);
+      e.stopPropagation();
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // Обработчик для кнопок "Назад" внутри слайдов
+  const backButtons = quizBlock.querySelectorAll('.btn-back');
+  console.log(`🔙 Квиз #${index + 1}: найдено ${backButtons.length} кнопок "Назад"`);
+
+  backButtons.forEach((btn) => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log(`🔙 Квиз #${index + 1}: клик по кнопке "Назад"`);
+
+      if (!swiperQuiz) {
+        console.log(`⚠️ Квиз #${index + 1}: swiperQuiz не инициализирован`);
+        return;
+      }
+
+      const currentSlideIndex = swiperQuiz.activeIndex;
+      console.log(`🔙 Квиз #${index + 1}: текущий слайд ${currentSlideIndex}`);
+
+      if (currentSlideIndex === 0) {
+        console.log(`🔙 Квиз #${index + 1}: закрытие квиза`);
+        document.documentElement.classList.remove('open-quiz');
+      } else if (currentSlideIndex > 0) {
+        console.log(`🔙 Квиз #${index + 1}: переход на предыдущий слайд`);
+        swiperQuiz.slidePrev();
+      }
+    });
+  });
+
+  // Обработчик для кнопок "Далее"
+  const nextButtons = quizBlock.querySelectorAll('.btn-next');
+  console.log(`🔜 Квиз #${index + 1}: найдено ${nextButtons.length} кнопок "Далее"`);
+
+  nextButtons.forEach((btn) => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log(`🔜 Квиз #${index + 1}: клик по кнопке "Далее"`);
+
+      if (!swiperQuiz) {
+        console.log(`⚠️ Квиз #${index + 1}: swiperQuiz не инициализирован`);
+        return;
+      }
+
+      const currentSlideIndex = swiperQuiz.activeIndex;
+      console.log(`🔜 Квиз #${index + 1}: текущий слайд ${currentSlideIndex}`);
+
+      // Проверяем, что ответ выбран
+      if (!selectedAnswers[currentSlideIndex]) {
+        console.log(`⚠️ Квиз #${index + 1}: ответ не выбран для слайда ${currentSlideIndex}`);
+        // Визуальная подсказка
+        const slides = quizBlock.querySelectorAll('.block-quiz-steps__slide');
+        const slide = slides[currentSlideIndex];
+        const options = slide.querySelectorAll('.options1__item, .options2__item, .options3__item');
+        options.forEach(opt => {
+          opt.style.animation = 'shake 0.5s';
+          setTimeout(() => {
+            opt.style.animation = '';
+          }, 500);
+        });
+        return;
+      }
+
+      goToNextSlide();
+    });
+  });
+
+  // Обработчик для опций options1
+  const options1 = quizBlock.querySelectorAll('.options1__item');
+  console.log(`🖼️ Квиз #${index + 1}: найдено ${options1.length} опций options1`);
+
+  options1.forEach((optionItem) => {
+    optionItem.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log(`🖼️ Квиз #${index + 1}: клик по опции options1`);
+
+      if (!swiperQuiz) {
+        console.log(`⚠️ Квиз #${index + 1}: swiperQuiz не инициализирован`);
+        return;
+      }
+
+      const currentSlideIndex = swiperQuiz.activeIndex;
+
+      if (this.classList.contains('active')) {
+        console.log(`🖼️ Квиз #${index + 1}: опция уже активна`);
+        return;
+      }
+
+      const textElement = this.querySelector('.options1__title');
+      let answerText = textElement ? textElement.textContent.trim() : '';
+      console.log(`🖼️ Квиз #${index + 1}: выбран ответ: "${answerText}"`);
+
+      handleOptionSelection(currentSlideIndex, answerText, this);
+    });
+  });
+
+  // Обработчик для опций options2
+  const options2 = quizBlock.querySelectorAll('.options2__item');
+  console.log(`📋 Квиз #${index + 1}: найдено ${options2.length} опций options2`);
+
+  options2.forEach((optionItem) => {
+    optionItem.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log(`📋 Квиз #${index + 1}: клик по опции options2`);
+
+      if (!swiperQuiz) {
+        console.log(`⚠️ Квиз #${index + 1}: swiperQuiz не инициализирован`);
+        return;
+      }
+
+      const currentSlideIndex = swiperQuiz.activeIndex;
+
+      // Пропускаем первый и финальный слайды
+      if (currentSlideIndex === 0 || currentSlideIndex === totalQuestions) {
+        console.log(`📋 Квиз #${index + 1}: слайд ${currentSlideIndex} - пропускаем (первый или финальный)`);
+        return;
+      }
+
+      const isActive = this.classList.contains('active');
+
+      if (isActive) {
+        // Если опция уже активна - снимаем выбор
+        console.log(`📋 Квиз #${index + 1}: снимаем выбор`);
+        this.classList.remove('active');
+        const radioInput = this.querySelector('input[type="radio"]');
+        if (radioInput) {
+          radioInput.checked = false;
+        }
+        delete selectedAnswers[currentSlideIndex];
+        updateNextButtonState(currentSlideIndex);
+        return;
+      }
+
+      const textElement = this.querySelector('.options2__text');
+      let answerText = textElement ? textElement.textContent.trim() : '';
+      console.log(`📋 Квиз #${index + 1}: выбран ответ: "${answerText}"`);
+
+      handleOptionSelection(currentSlideIndex, answerText, this);
+    });
+  });
+
+  // Обработчик для опций options3
+  const options3 = quizBlock.querySelectorAll('.options3__item');
+  console.log(`📋 Квиз #${index + 1}: найдено ${options3.length} опций options3`);
+
+  options3.forEach((optionItem) => {
+    optionItem.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log(`📋 Квиз #${index + 1}: клик по опции options3`);
+
+      if (!swiperQuiz) {
+        console.log(`⚠️ Квиз #${index + 1}: swiperQuiz не инициализирован`);
+        return;
+      }
+
+      const currentSlideIndex = swiperQuiz.activeIndex;
+
+      if (currentSlideIndex !== 0) {
+        console.log(`📋 Квиз #${index + 1}: не первый слайд, игнорируем`);
+        return;
+      }
+
+      if (this.classList.contains('active')) {
+        console.log(`📋 Квиз #${index + 1}: опция уже активна`);
+        return;
+      }
+
+      const textElement = this.querySelector('.options3__text');
+      let answerText = textElement ? textElement.textContent.trim() : '';
+      console.log(`📋 Квиз #${index + 1}: выбран ответ: "${answerText}"`);
+
+      handleOptionSelection(currentSlideIndex, answerText, this);
+    });
+  });
+
+  // Функция подготовки данных для отправки
+  function prepareQuizData() {
+    console.log(`📤 Квиз #${index + 1}: подготовка данных для отправки`);
+
+    const answeredCount = selectedAnswers.filter(ans => ans !== undefined).length;
+    console.log(`📤 Квиз #${index + 1}: отвечено ${answeredCount} из ${totalQuestions} вопросов`);
+
+    if (answeredCount < totalQuestions) {
+      console.log(`⚠️ Квиз #${index + 1}: не все вопросы отвечены`);
+      alert(`Пожалуйста, ответьте на все ${totalQuestions} вопросов. Отвечено: ${answeredCount}`);
+      return null;
+    }
+
+    const formData = new FormData();
+
+    const questionMapping = {
+      0: 'location',
+      1: 'size',
+      2: 'facade',
+      3: 'telegram',
+      4: 'max_name'
+    };
+
+    selectedAnswers.forEach((answer, idx) => {
+      if (answer && questionMapping[idx]) {
+        console.log(`📤 Квиз #${index + 1}: добавляем ${questionMapping[idx]} = "${answer.answer}"`);
+        formData.append(questionMapping[idx], answer.answer);
+      }
+    });
+
+    return formData;
+  }
+
+  // Обработчик отправки формы
+  const sendButton = quizBlock.querySelector('.btn-send');
+  if (sendButton) {
+    console.log(`📨 Квиз #${index + 1}: найдена кнопка отправки`);
+
+    sendButton.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log(`📨 Квиз #${index + 1}: клик по кнопке "Отправить"`);
+
+      const formData = prepareQuizData();
+      if (!formData) {
+        console.log(`❌ Квиз #${index + 1}: данные не готовы, отправка отменена`);
+        return;
+      }
+
+      isQuizCompleted = true;
+      stopTimer();
+      console.log(`✅ Квиз #${index + 1}: все вопросы отвечены, отправка формы`);
+
+      const form = quizBlock.querySelector('.block-quiz-steps');
+      if (form) {
+        // Удаляем старые скрытые поля
+        form.querySelectorAll('input[type="hidden"]').forEach(input => {
+          if (['location', 'size', 'facade', 'telegram', 'max_name'].includes(input.name)) {
+            console.log(`📨 Квиз #${index + 1}: удаляем скрытое поле ${input.name}`);
+            input.remove();
+          }
+        });
+
+        // Добавляем новые скрытые поля с ответами
+        const questionMapping = {
+          0: 'location',
+          1: 'size',
+          2: 'facade',
+          3: 'telegram',
+          4: 'max_name'
+        };
+
+        selectedAnswers.forEach((answer, idx) => {
+          if (answer && questionMapping[idx]) {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = questionMapping[idx];
+            input.value = answer.answer;
+            form.appendChild(input);
+            console.log(`📨 Квиз #${index + 1}: добавлено скрытое поле ${questionMapping[idx]} = "${answer.answer}"`);
+          }
+        });
+
+        // Отправляем форму
+        console.log(`📨 Квиз #${index + 1}: отправка формы`);
+        const submitEvent = new Event('submit', { bubbles: true, cancelable: true });
+        form.dispatchEvent(submitEvent);
+      } else {
+        console.log(`❌ Квиз #${index + 1}: форма не найдена`);
+      }
+    });
+  } else {
+    console.log(`⚠️ Квиз #${index + 1}: кнопка отправки не найдена`);
+  }
+
+  // Добавляем анимацию для подсказки
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+  `;
+  document.head.appendChild(style);
+
+  console.log(`✅ Квиз #${index + 1}: инициализация завершена`);
+});
+
+console.log('✅ Все квизы инициализированы');

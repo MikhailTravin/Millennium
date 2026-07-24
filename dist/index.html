@@ -401,10 +401,10 @@
 					</div>
 				</div>
 
-				<div class="block-benefits">
+				<div class="block-descr">
 					<div class="container">
-						<div class="block-benefits__content">
-							<div class="block-benefits__body">
+						<div class="block-descr__content">
+							<div class="block-descr__body">
 								<div class="heading-complex">
 									<h2 class="title2">
 										<span>Лучше один раз увидеть:</span> посетите наш выставочный дом перед началом
@@ -459,35 +459,1195 @@
 									</svg>
 								</a>
 							</div>
-							<div class="block-benefits__swiper">
-								<div class="block-benefits__slider swiper">
-									<div class="block-benefits__wrapper swiper-wrapper">
-										<a href="img/image5.webp" data-fancybox="gallery1" class="block-benefits__slide swiper-slide">
+							<div class="block-descr__swiper">
+								<div class="block-descr__slider swiper">
+									<div class="block-descr__wrapper swiper-wrapper">
+										<a href="img/image5.webp" data-fancybox="gallery1" class="block-descr__slide swiper-slide">
 											<img loading="lazy" src="img/image5.webp" alt="">
 										</a>
-										<a href="img/image5.webp" data-fancybox="gallery1" class="block-benefits__slide swiper-slide">
+										<a href="img/image5.webp" data-fancybox="gallery1" class="block-descr__slide swiper-slide">
 											<img loading="lazy" src="img/image5.webp" alt="">
 										</a>
-										<a href="img/image5.webp" data-fancybox="gallery1" class="block-benefits__slide swiper-slide">
+										<a href="img/image5.webp" data-fancybox="gallery1" class="block-descr__slide swiper-slide">
 											<img loading="lazy" src="img/image5.webp" alt="">
 										</a>
-										<a href="img/image5.webp" data-fancybox="gallery1" class="block-benefits__slide swiper-slide">
+										<a href="img/image5.webp" data-fancybox="gallery1" class="block-descr__slide swiper-slide">
 											<img loading="lazy" src="img/image5.webp" alt="">
 										</a>
 									</div>
 								</div>
 								<div class="slider-nav">
-									<button type="button" class="slider-nav__arrows arrow-prev benefits-arrow-prev">
+									<button type="button" class="slider-nav__arrows arrow-prev descr-arrow-prev">
 										<svg aria-hidden="true" width="10" height="19">
 											<use xlink:href="img/sprite.svg#arrow1"></use>
 										</svg>
 									</button>
-									<div class="slider-nav__pagination benefits-pagination"></div>
-									<button type="button" class="slider-nav__arrows arrow-next benefits-arrow-next">
+									<div class="slider-nav__pagination descr-pagination"></div>
+									<button type="button" class="slider-nav__arrows arrow-next descr-arrow-next">
 										<svg aria-hidden="true" width="10" height="19">
 											<use xlink:href="img/sprite.svg#arrow1"></use>
 										</svg>
 									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="block-quiz">
+					<div class="container">
+						<div class="block-quiz__contents">
+							<div class="block-quiz__content">
+								<div class="block-quiz__body">
+									<div class="block-quiz-header">
+										<h2 class="title2">
+											Ответьте на 5 вопросов и получите <span>расчёт стоимости</span> кирпичного дома
+											для
+											вашей семье
+										</h2>
+										<ul>
+											<li>
+												<img loading="lazy" src="img/icons/time2.svg" alt="">
+												<p>
+													Всего <span>2 минуты</span> — покажем примерную стоимость, сроки
+													строительства и дадим
+													практический чек-лист по ошибкам стройки
+												</p>
+											</li>
+											<li>
+												<div class="block-quiz-header__icon">
+													<svg aria-hidden="true" width="40" height="40">
+														<use xlink:href="img/sprite.svg#check1"></use>
+													</svg>
+												</div>
+												<p>
+													Это ни к чему не обязывает вы просто получите предварительный расчёт
+													стоиомсти дома по вашим параметрам
+												</p>
+											</li>
+										</ul>
+									</div>
+									<form data-ajax action="quiz-handler.php" method="POST" data-popup-message="#thanks" data-da=".block-quiz__contents, 1200, last" class="block-quiz-steps">
+										<div class="block-quiz-steps__nav">
+											<div class="block-quiz-steps__descr">
+												<div class="block-quiz-steps__questions-text">
+													Вопрос <span>1</span> из 5
+												</div>
+												<div class="block-quiz-steps__time">
+													2 минуты
+												</div>
+											</div>
+											<div class="block-quiz-steps__pagination"></div>
+										</div>
+										<div class="block-quiz-steps__slider swiper">
+											<div class="block-quiz-steps__wrapper swiper-wrapper">
+												<div class="block-quiz-steps__slide swiper-slide">
+													<div class="block-quiz-steps__item">
+														<div class="block-quiz-steps__titles">
+															<div class="block-quiz-steps__title">
+																Какой дом вы хотите построить?
+															</div>
+														</div>
+														<div class="options1">
+															<label class="options1__item">
+																<input hidden class="options1__input" type="radio" value="Одноэтажный дом" name="location">
+																<span class="options1__label">
+																	<img loading="lazy" src="img/image21.webp" alt="" class="options1__pic1">
+																	<span class="options1__text">
+																		<span class="options1__icon">
+																			<svg aria-hidden="true" width="40" height="34">
+																				<use xlink:href="img/sprite.svg#home2">
+																				</use>
+																			</svg>
+																		</span>
+																		<span class="options1__title">Одноэтажный дом</span>
+																	</span>
+																</span>
+															</label>
+															<label class="options1__item">
+																<input hidden class="options1__input" type="radio" value="Двухэтажный дом" name="location">
+																<span class="options1__label">
+																	<img loading="lazy" src="img/image22.webp" alt="" class="options1__pic1">
+																	<span class="options1__text">
+																		<span class="options1__icon">
+																			<svg aria-hidden="true" width="32" height="32">
+																				<use xlink:href="img/sprite.svg#floor">
+																				</use>
+																			</svg>
+																		</span>
+																		<span class="options1__title">Двухэтажный дом</span>
+																	</span>
+																</span>
+															</label>
+															<label class="options1__item">
+																<input hidden class="options1__input" type="radio" value="Дом с гаражом" name="location">
+																<span class="options1__label">
+																	<img loading="lazy" src="img/image23.webp" alt="" class="options1__pic1">
+																	<span class="options1__text">
+																		<span class="options1__icon">
+																			<svg aria-hidden="true" width="36" height="32">
+																				<use xlink:href="img/sprite.svg#garage">
+																				</use>
+																			</svg>
+																		</span>
+																		<span class="options1__title">Дом с гаражом</span>
+																	</span>
+																</span>
+															</label>
+															<label class="options1__item">
+																<input hidden class="options1__input" type="radio" value="Пока не решил" name="location">
+																<span class="options1__label">
+																	<img loading="lazy" src="img/image5.webp" alt="" class="options1__pic1">
+																	<span class="options1__text">
+																		<span class="options1__icon">
+																			<svg aria-hidden="true" width="34" height="34">
+																				<use xlink:href="img/sprite.svg#search">
+																				</use>
+																			</svg>
+																		</span>
+																		<span class="options1__title">Пока не решил</span>
+																	</span>
+																</span>
+															</label>
+														</div>
+													</div>
+												</div>
+												<div class="block-quiz-steps__slide swiper-slide">
+													<div class="block-quiz-steps__item">
+														<div class="block-quiz-steps__titles">
+															<div class="block-quiz-steps__title">
+																Какая нужна площадь дома?
+															</div>
+														</div>
+														<div class="options2">
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="от 80 м2 до 100 м2" name="size">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">от 80 м2 до 100 м2</span>
+																</span>
+															</label>
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="от 100 м2 до 130 м2" name="size">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">от 100 м2 до 130 м2</span>
+																</span>
+															</label>
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="от 130 м2 до 160 м2" name="size">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">от 130 м2 до 160 м2</span>
+																</span>
+															</label>
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="от 160 м2 до 200 м2" name="size">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">от 160 м2 до 200 м2</span>
+																</span>
+															</label>
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="больше 200 м2" name="size">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">больше 200 м2</span>
+																</span>
+															</label>
+														</div>
+													</div>
+													<div class="block-quiz-steps__buttons">
+														<button type="button" class="btn btn-border btn-big btn-back">
+															<svg style="transform:rotate(-180deg)" aria-hidden="true" width="6" height="11">
+																<use xlink:href="img/sprite.svg#arrow1"></use>
+															</svg>
+															<span>Назад</span>
+														</button>
+														<button type="button" class="btn btn-big btn-next">
+															<span>Далее</span>
+															<svg aria-hidden="true" width="6" height="11">
+																<use xlink:href="img/sprite.svg#arrow1"></use>
+															</svg>
+														</button>
+													</div>
+												</div>
+												<div class="block-quiz-steps__slide swiper-slide">
+													<div class="block-quiz-steps__item">
+														<div class="block-quiz-steps__titles">
+															<div class="block-quiz-steps__title">
+																Есть ли у Вас участок?
+															</div>
+														</div>
+														<div class="options2">
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="Да, есть свой участок" name="facade">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">Да, есть свой
+																		участок</span>
+																</span>
+															</label>
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="Участок нашли, но еще не купили" name="facade">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">Участок нашли, но еще не
+																		купили</span>
+																</span>
+															</label>
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="Нет, участок еще не выбран" name="facade">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">Нет, участок еще не
+																		выбран</span>
+																</span>
+															</label>
+														</div>
+													</div>
+													<div class="block-quiz-steps__buttons">
+														<button type="button" class="btn btn-border btn-big btn-back">
+															<svg style="transform:rotate(-180deg)" aria-hidden="true" width="6" height="11">
+																<use xlink:href="img/sprite.svg#arrow1"></use>
+															</svg>
+															<span>Назад</span>
+														</button>
+														<button type="button" class="btn btn-big btn-next">
+															<span>Далее</span>
+															<svg aria-hidden="true" width="6" height="11">
+																<use xlink:href="img/sprite.svg#arrow1"></use>
+															</svg>
+														</button>
+													</div>
+												</div>
+												<div class="block-quiz-steps__slide swiper-slide">
+													<div class="block-quiz-steps__item">
+														<div class="block-quiz-steps__titles">
+															<div class="block-quiz-steps__title">
+																Сколько этажей хотите?
+															</div>
+														</div>
+														<div class="options2">
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="1" name="telegram">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">1</span>
+																</span>
+															</label>
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="2" name="telegram">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">2</span>
+																</span>
+															</label>
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="3" name="telegram">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">3</span>
+																</span>
+															</label>
+														</div>
+													</div>
+													<div class="block-quiz-steps__buttons">
+														<button type="button" class="btn btn-border btn-big btn-back">
+															<svg style="transform:rotate(-180deg)" aria-hidden="true" width="6" height="11">
+																<use xlink:href="img/sprite.svg#arrow1"></use>
+															</svg>
+															<span>Назад</span>
+														</button>
+														<button type="button" class="btn btn-big btn-next">
+															<span>Далее</span>
+															<svg aria-hidden="true" width="6" height="11">
+																<use xlink:href="img/sprite.svg#arrow1"></use>
+															</svg>
+														</button>
+													</div>
+												</div>
+												<div class="block-quiz-steps__slide swiper-slide">
+													<div class="block-quiz-steps__item">
+														<div class="block-quiz-steps__titles">
+															<div class="block-quiz-steps__title">
+																Сколько этажей хотите?
+															</div>
+														</div>
+														<div class="options2">
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="Наличные средства" name="max_name">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">Наличные средства</span>
+																</span>
+															</label>
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="Безналичный расчет" name="max_name">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">Безналичный расчет</span>
+																</span>
+															</label>
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="Ипотека" name="max_name">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">Ипотека</span>
+																</span>
+															</label>
+														</div>
+													</div>
+													<div class="block-quiz-steps__buttons">
+														<button type="button" class="btn btn-border btn-big btn-back">
+															<svg style="transform:rotate(-180deg)" aria-hidden="true" width="6" height="11">
+																<use xlink:href="img/sprite.svg#arrow1"></use>
+															</svg>
+															<span>Назад</span>
+														</button>
+														<button type="submit" class="btn btn-big btn-send">
+															<span>Отправить</span>
+															<svg aria-hidden="true" width="6" height="11">
+																<use xlink:href="img/sprite.svg#arrow1"></use>
+															</svg>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+								<div class="block-quiz-right">
+									<div class="block-quiz-right__image">
+										<img loading="lazy" src="img/image20.webp" alt="" class="block-quiz__pic1">
+									</div>
+									<div class="block-quiz-right__text">
+										<div class="block-quiz-right__icon">
+											<svg aria-hidden="true" width="27" height="30">
+												<use xlink:href="img/sprite.svg#present"></use>
+											</svg>
+										</div>
+										<span>
+											Получите вместе с расчетом стоимости
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="block-benefits">
+					<div class="container">
+						<div class="block-benefits__content">
+							<div class="block-benefits-header">
+								<div class="block-benefits-header__text">
+									Почему мои клиенты
+								</div>
+								<div class="title1">
+									Получают дом
+								</div>
+								<div class="title2">
+									<span>а не проблемы после стройки</span>
+								</div>
+							</div>
+							<div class="block-benefits__body">
+								<div class="block-benefits-top">
+									<div class="block-benefits-top__column">
+										<div class="block-benefits-top__item">
+											<div class="block-benefits-top__icon">
+												<svg aria-hidden="true" width="28" height="28">
+													<use xlink:href="img/sprite.svg#control"></use>
+												</svg>
+											</div>
+											<div class="block-benefits-top__titles">
+												<div class="block-benefits-top__title">
+													Личный контроль армирования
+												</div>
+												<p>
+													Проверяю каркас, шаг арматуры, нахлёсты и узлы до заливки бетона.
+													Никаких
+													“на глаз” и по нитию
+												</p>
+											</div>
+										</div>
+										<div class="block-benefits-top__images">
+											<img loading="lazy" src="img/image6.webp" alt="">
+											<img loading="lazy" src="img/image7.webp" alt="">
+										</div>
+									</div>
+									<div class="block-benefits-top__column">
+										<div class="block-benefits-top__item">
+											<div class="block-benefits-top__icon">
+												<svg aria-hidden="true" width="30" height="30">
+													<use xlink:href="img/sprite.svg#calculate"></use>
+												</svg>
+											</div>
+											<div class="block-benefits-top__titles">
+												<div class="block-benefits-top__title">
+													Инженерные расчёты нагрузок
+												</div>
+												<p>
+													Все решения принимаются по рсчётам, а не “на опыте” бригады. Дом будет
+													надежным и безопасным
+												</p>
+											</div>
+										</div>
+										<div class="block-benefits-top__images">
+											<img loading="lazy" src="img/image8.webp" alt="">
+											<img loading="lazy" src="img/image9.webp" alt="">
+										</div>
+									</div>
+									<div class="block-benefits-top__column">
+										<div class="block-benefits-top__item">
+											<div class="block-benefits-top__icon">
+												<svg aria-hidden="true" width="26" height="26">
+													<use xlink:href="img/sprite.svg#search"></use>
+												</svg>
+											</div>
+											<div class="block-benefits-top__titles">
+												<div class="block-benefits-top__title">
+													Проверка скрытых узлов
+												</div>
+												<p>
+													Контролирую гидроизоляцию, перемычки, армопояс, закладные детали и
+													другие скрытые работы
+												</p>
+											</div>
+										</div>
+										<div class="block-benefits-top__images">
+											<img loading="lazy" src="img/image10.webp" alt="">
+											<img loading="lazy" src="img/image11.webp" alt="">
+										</div>
+									</div>
+									<div class="block-benefits-top__column">
+										<div class="block-benefits-top__item">
+											<div class="block-benefits-top__icon">
+												<svg aria-hidden="true" width="28" height="26">
+													<use xlink:href="img/sprite.svg#bricks"></use>
+												</svg>
+											</div>
+											<div class="block-benefits-top__titles">
+												<div class="block-benefits-top__title">
+													Контроль кладки и геометрии
+												</div>
+												<p>
+													Проверю перевязку, толщину швов, оклонения по плоскостям и качество
+													кладки на каждом этапе
+												</p>
+											</div>
+										</div>
+										<div class="block-benefits-top__images">
+											<img loading="lazy" src="img/image12.webp" alt="">
+											<img loading="lazy" src="img/image13.webp" alt="">
+										</div>
+									</div>
+								</div>
+								<div class="block-benefits-bottom">
+									<div class="block-benefits-bottom__column column-minus">
+										<img src="img/image14.webp" alt="" class="block-benefits-bottom__bg1">
+										<div class="block-benefits-bottom__item">
+											<div class="block-benefits-bottom__title">
+												<div class="icon-check">
+													<svg aria-hidden="true" width="10" height="10">
+														<use xlink:href="img/sprite.svg#close"></use>
+													</svg>
+												</div>
+												<span>Без инженерного подхода</span>
+											</div>
+											<ul>
+												<li>
+													<div class="icon-check">
+														<svg aria-hidden="true" width="10" height="10">
+															<use xlink:href="img/sprite.svg#close"></use>
+														</svg>
+													</div>
+													<span>
+														Скрытые ошибки становятся видны слышком поздно
+													</span>
+												</li>
+												<li>
+													<div class="icon-check">
+														<svg aria-hidden="true" width="10" height="10">
+															<use xlink:href="img/sprite.svg#close"></use>
+														</svg>
+													</div>
+													<span>
+														Переделки и постоянные “доплаты”
+													</span>
+												</li>
+												<li>
+													<div class="icon-check">
+														<svg aria-hidden="true" width="10" height="10">
+															<use xlink:href="img/sprite.svg#close"></use>
+														</svg>
+													</div>
+													<span>
+														Срывы сроков и простои на объекте
+													</span>
+												</li>
+												<li>
+													<div class="icon-check">
+														<svg aria-hidden="true" width="10" height="10">
+															<use xlink:href="img/sprite.svg#close"></use>
+														</svg>
+													</div>
+													<span>
+														Стресс, нервы и конфликты с подрядчиками
+													</span>
+												</li>
+												<li>
+													<div class="icon-check">
+														<svg aria-hidden="true" width="10" height="10">
+															<use xlink:href="img/sprite.svg#close"></use>
+														</svg>
+													</div>
+													<span>
+														Суды и защита своих прав
+													</span>
+												</li>
+												<li>
+													<div class="icon-check">
+														<svg aria-hidden="true" width="10" height="10">
+															<use xlink:href="img/sprite.svg#close"></use>
+														</svg>
+													</div>
+													<span>
+														Дом, в котором невозможно спокойно жить
+													</span>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="block-benefits-bottom__column">
+										<img src="img/image15.webp" alt="" class="block-benefits-bottom__bg1">
+										<div class="block-benefits-bottom__item">
+											<div class="block-benefits-bottom__title">
+												<div class="icon-check">
+													<svg aria-hidden="true" width="14" height="11">
+														<use xlink:href="img/sprite.svg#check2"></use>
+													</svg>
+												</div>
+												<span>С инженерного подхода</span>
+											</div>
+											<ul>
+												<li>
+													<div class="icon-check">
+														<svg aria-hidden="true" width="14" height="11">
+															<use xlink:href="img/sprite.svg#check2"></use>
+														</svg>
+													</div>
+													<span>
+														Надежный дом, построенный правильно
+													</span>
+												</li>
+												<li>
+													<div class="icon-check">
+														<svg aria-hidden="true" width="14" height="11">
+															<use xlink:href="img/sprite.svg#check2"></use>
+														</svg>
+													</div>
+													<span>
+														Фиксированная цена и прозрачные сроки
+													</span>
+												</li>
+												<li>
+													<div class="icon-check">
+														<svg aria-hidden="true" width="14" height="11">
+															<use xlink:href="img/sprite.svg#check2"></use>
+														</svg>
+													</div>
+													<span>
+														Отсутствие переделок и лишних расходов
+													</span>
+												</li>
+												<li>
+													<div class="icon-check">
+														<svg aria-hidden="true" width="14" height="11">
+															<use xlink:href="img/sprite.svg#check2"></use>
+														</svg>
+													</div>
+													<span>
+														Спокойствие, уверенность и гордость за свой дом
+													</span>
+												</li>
+												<li>
+													<div class="icon-check">
+														<svg aria-hidden="true" width="14" height="11">
+															<use xlink:href="img/sprite.svg#check2"></use>
+														</svg>
+													</div>
+													<span>
+														Дом, в котором комфортно жить вам и вашей семье
+													</span>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="block-works">
+					<div class="container">
+						<div class="block-works__content">
+							<div class="block-works-header">
+								<h2 class="title2">
+									Реальные дома, которые мы уже <span>построили и передали</span> семьям
+								</h2>
+								<div class="block-works-header__right">
+									<div class="block-works-header__icon">
+										<svg aria-hidden="true" width="45" height="45">
+											<use xlink:href="img/sprite.svg#check1"></use>
+										</svg>
+									</div>
+									<p>
+										Покажем готовые дома и этапы строительства до договора
+									</p>
+								</div>
+							</div>
+							<div class="block-works__body">
+								<div class="block-works__cards">
+									<div class="product-card">
+										<div class="product-card__image">
+											<img loading="lazy" src="img/image16.webp" alt="">
+										</div>
+										<div class="product-card__item">
+											<div class="product-card__title">
+												Кирпичный дом 180 м2 в Чебоксарах
+											</div>
+											<div class="block-descr-list">
+												<ul>
+													<li>
+														<svg aria-hidden="true" width="24" height="24">
+															<use xlink:href="img/sprite.svg#area"></use>
+														</svg>
+														<span>180 м2</span>
+													</li>
+													<li>
+														<svg aria-hidden="true" width="24" height="24">
+															<use xlink:href="img/sprite.svg#floor"></use>
+														</svg>
+														<span>2 этажа</span>
+													</li>
+													<li>
+														<svg aria-hidden="true" width="24" height="24">
+															<use xlink:href="img/sprite.svg#garage"></use>
+														</svg>
+														<span>гараж</span>
+													</li>
+													<li>
+														<svg aria-hidden="true" width="24" height="24">
+															<use xlink:href="img/sprite.svg#bricks"></use>
+														</svg>
+														<span>Кирпич</span>
+													</li>
+													<li>
+														<svg aria-hidden="true" width="23" height="24">
+															<use xlink:href="img/sprite.svg#calendar"></use>
+														</svg>
+														<span>2024 год</span>
+													</li>
+												</ul>
+											</div>
+											<div class="product-card__columns">
+												<div class="product-card__column">
+													<div class="product-card__name">
+														Что было важно:
+													</div>
+													<ul>
+														<li>
+															Теплый кирпичный дом для ПМЖ
+														</li>
+														<li>
+															Гараж и удобная планировка
+														</li>
+														<li>
+															Четкие сроки без беспонечных переделок
+														</li>
+														<li>
+															Фото стройки, этапы, материалы
+														</li>
+													</ul>
+												</div>
+												<div class="product-card__column">
+													<div class="product-card__name">
+														Что сделали:
+													</div>
+													<ul>
+														<li>
+															Построили из тёплой керамики
+														</li>
+														<li>
+															Контролировали скрытые этапы до закрытия работы
+														</li>
+														<li>
+															Сдали дом заказчику
+														</li>
+													</ul>
+												</div>
+											</div>
+											<a href="./" class="btn btn-border">
+												<span>Посмотреть фото и детали</span>
+												<svg aria-hidden="true" width="6" height="11">
+													<use xlink:href="img/sprite.svg#arrow1"></use>
+												</svg>
+											</a>
+										</div>
+									</div>
+									<div class="product-card product-card-mini">
+										<div class="product-card__image">
+											<img loading="lazy" src="img/image17.webp" alt="">
+										</div>
+										<div class="product-card__item">
+											<div class="product-card__title">
+												Дом 165 м2 в Новочебоксарске
+											</div>
+											<div class="block-descr-list">
+												<ul>
+													<li>
+														<svg aria-hidden="true" width="24" height="24">
+															<use xlink:href="img/sprite.svg#area"></use>
+														</svg>
+														<span>165 м2</span>
+													</li>
+													<li>
+														<svg aria-hidden="true" width="24" height="24">
+															<use xlink:href="img/sprite.svg#floor"></use>
+														</svg>
+														<span>2 этажа</span>
+													</li>
+													<li>
+														<svg aria-hidden="true" width="24" height="24">
+															<use xlink:href="img/sprite.svg#bricks"></use>
+														</svg>
+														<span>Кирпич</span>
+													</li>
+													<li>
+														<svg aria-hidden="true" width="24" height="24">
+															<use xlink:href="img/sprite.svg#garage"></use>
+														</svg>
+														<span>гараж</span>
+													</li>
+													<li>
+														<svg aria-hidden="true" width="23" height="24">
+															<use xlink:href="img/sprite.svg#calendar"></use>
+														</svg>
+														<span>2014</span>
+													</li>
+												</ul>
+											</div>
+											<div class="product-card__columns">
+												<div class="product-card__column">
+													<div class="product-card__name">
+														Что было важно:
+													</div>
+													<ul>
+														<li>
+															Компактный дом с террасой
+														</li>
+														<li>
+															Понятный бюджет
+														</li>
+														<li>
+															Удобная планировка для семьи
+														</li>
+													</ul>
+												</div>
+												<div class="product-card__column">
+													<div class="product-card__name">
+														Что сделали:
+													</div>
+													<ul>
+														<li>
+															Контролировали этапы
+														</li>
+														<li>
+															Сохранили согласованный бюджет
+														</li>
+														<li>
+															Сделали комфортный готовый дом
+														</li>
+													</ul>
+												</div>
+											</div>
+											<a href="./" class="btn btn-border">
+												<span>Посмотреть фото и детали</span>
+												<svg aria-hidden="true" width="6" height="11">
+													<use xlink:href="img/sprite.svg#arrow1"></use>
+												</svg>
+											</a>
+										</div>
+									</div>
+									<div class="product-card product-card-mini">
+										<div class="product-card__image">
+											<img loading="lazy" src="img/image18.webp" alt="">
+										</div>
+										<div class="product-card__item">
+											<div class="product-card__title">
+												Дом 130 м2 в Чебоксарском районе
+											</div>
+											<div class="block-descr-list">
+												<ul>
+													<li>
+														<svg aria-hidden="true" width="24" height="24">
+															<use xlink:href="img/sprite.svg#area"></use>
+														</svg>
+														<span>130 м2</span>
+													</li>
+													<li>
+														<svg aria-hidden="true" width="24" height="24">
+															<use xlink:href="img/sprite.svg#floor"></use>
+														</svg>
+														<span>1 этаж</span>
+													</li>
+													<li>
+														<svg aria-hidden="true" width="24" height="24">
+															<use xlink:href="img/sprite.svg#bricks"></use>
+														</svg>
+														<span>Кирпич</span>
+													</li>
+													<li>
+														<svg aria-hidden="true" width="23" height="24">
+															<use xlink:href="img/sprite.svg#calendar"></use>
+														</svg>
+														<span>2024</span>
+													</li>
+												</ul>
+											</div>
+											<div class="product-card__columns">
+												<div class="product-card__column">
+													<div class="product-card__name">
+														Что было важно:
+													</div>
+													<ul>
+														<li>
+															Ровный участок для семьи
+														</li>
+														<li>
+															Качественная стройка
+														</li>
+														<li>
+															Без сюрпризов
+														</li>
+													</ul>
+												</div>
+												<div class="product-card__column">
+													<div class="product-card__name">
+														Что сделали:
+													</div>
+													<ul>
+														<li>
+															Адаптирповали решение под участок
+														</li>
+														<li>
+															Контролировали ключевые работы
+														</li>
+														<li>
+															Сдали предсказуемый результат
+														</li>
+													</ul>
+												</div>
+											</div>
+											<a href="./" class="btn btn-border">
+												<span>Посмотреть фото и детали</span>
+												<svg aria-hidden="true" width="6" height="11">
+													<use xlink:href="img/sprite.svg#arrow1"></use>
+												</svg>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="block-works__buttons">
+									<a href="./" class="btn btn-big">
+										<span>Посмотреть все реализованные объекты</span>
+										<svg aria-hidden="true" width="6" height="11">
+											<use xlink:href="img/sprite.svg#arrow1"></use>
+										</svg>
+									</a>
+									<a href="./" class="btn btn-big btn-border">
+										<span>Записаться на просмотр готового объекта</span>
+										<svg aria-hidden="true" width="6" height="11">
+											<use xlink:href="img/sprite.svg#arrow1"></use>
+										</svg>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="block-steps">
+					<div class="container">
+						<div class="block-steps__content">
+							<div class="block-steps-top">
+								<div class="block-steps-top__header">
+									<h2 class="title2">
+										Как проходит строительство
+										<span>без хаоса и сюрпризов</span>
+									</h2>
+									<div class="block-steps-top__text">
+										<p>
+											Шаг за шагом — от первого расчёта до понятного результата
+										</p>
+									</div>
+								</div>
+								<div class="block-steps-top__image">
+									<img loading="lazy" src="img/image19.webp" alt="">
+								</div>
+							</div>
+							<div class="block-steps-center">
+								<div class="block-steps-descr">
+									<div class="block-steps-descr__lines">
+										<div class="block-steps-descr__line2"></div>
+									</div>
+									<div class="block-steps-descr__item">
+										<div class="block-steps-descr__icon">
+											<svg aria-hidden="true" width="48" height="48">
+												<use xlink:href="img/sprite.svg#edit"></use>
+											</svg>
+										</div>
+										<div class="block-steps-descr__titles">
+											<div class="block-steps-descr__title">
+												До стройки
+											</div>
+											<p>
+												Понимаем задачу, снижаем бюджет и фиксируем решения
+											</p>
+										</div>
+									</div>
+									<div class="block-steps-descr__lines">
+										<div class="block-steps-descr__line1"></div>
+										<div class="block-steps-descr__line2"></div>
+									</div>
+									<div class="block-steps-descr__item">
+										<div class="block-steps-descr__icon">
+											<svg aria-hidden="true" width="48" height="34">
+												<use xlink:href="img/sprite.svg#helmet"></use>
+											</svg>
+										</div>
+										<div class="block-steps-descr__titles">
+											<div class="block-steps-descr__title">
+												На стройке
+											</div>
+											<p>
+												Вы видите ход работ и принимаете этапы перед оплатой
+											</p>
+										</div>
+									</div>
+									<div class="block-steps-descr__lines">
+										<div class="block-steps-descr__line1"></div>
+										<div class="block-steps-descr__line2"></div>
+									</div>
+									<div class="block-steps-descr__item">
+										<div class="block-steps-descr__icon">
+											<svg aria-hidden="true" width="44" height="43">
+												<use xlink:href="img/sprite.svg#keys"></use>
+											</svg>
+										</div>
+										<div class="block-steps-descr__titles">
+											<div class="block-steps-descr__title">
+												Передача дома
+											</div>
+											<p>
+												Понятный результат без догадок
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="block-steps-line">
+									<div class="block-steps-line__column">
+										<div class="block-steps-line__number">
+											1
+										</div>
+										<div class="block-steps-line__arrow">
+											<svg aria-hidden="true" width="6" height="25">
+												<use xlink:href="img/sprite.svg#arrow3"></use>
+											</svg>
+										</div>
+									</div>
+									<div class="block-steps-line__column">
+										<div class="block-steps-line__number">
+											2
+										</div>
+										<div class="block-steps-line__arrow">
+											<svg aria-hidden="true" width="6" height="25">
+												<use xlink:href="img/sprite.svg#arrow3"></use>
+											</svg>
+										</div>
+									</div>
+									<div class="block-steps-line__column">
+										<div class="block-steps-line__number">
+											3
+										</div>
+										<div class="block-steps-line__arrow">
+											<svg aria-hidden="true" width="6" height="25">
+												<use xlink:href="img/sprite.svg#arrow3"></use>
+											</svg>
+										</div>
+									</div>
+									<div class="block-steps-line__column">
+										<div class="block-steps-line__number">
+											4
+										</div>
+										<div class="block-steps-line__arrow">
+											<svg aria-hidden="true" width="6" height="25">
+												<use xlink:href="img/sprite.svg#arrow3"></use>
+											</svg>
+										</div>
+									</div>
+									<div class="block-steps-line__column">
+										<div class="block-steps-line__number">
+											5
+										</div>
+										<div class="block-steps-line__arrow">
+											<svg aria-hidden="true" width="6" height="25">
+												<use xlink:href="img/sprite.svg#arrow3"></use>
+											</svg>
+										</div>
+									</div>
+									<div class="block-steps-line__column">
+										<div class="block-steps-line__number">
+											6
+										</div>
+										<div class="block-steps-line__arrow">
+											<svg aria-hidden="true" width="6" height="25">
+												<use xlink:href="img/sprite.svg#arrow3"></use>
+											</svg>
+										</div>
+									</div>
+								</div>
+								<div class="block-steps-center__cards">
+									<div class="block-steps-center__card">
+										<div class="block-steps-center__icon">
+											<svg aria-hidden="true" width="42" height="42">
+												<use xlink:href="img/sprite.svg#settings"></use>
+											</svg>
+										</div>
+										<div class="block-steps-center__titles">
+											<div class="block-steps-center__title">
+												Разбираем задачу
+											</div>
+											<p>
+												Воплощаем пожелания вашей семьи
+											</p>
+										</div>
+									</div>
+									<div class="block-steps-center__card">
+										<div class="block-steps-center__icon">
+											<svg aria-hidden="true" width="48" height="48">
+												<use xlink:href="img/sprite.svg#calculate"></use>
+											</svg>
+										</div>
+										<div class="block-steps-center__titles">
+											<div class="block-steps-center__title">
+												Считаем стоимость
+											</div>
+											<p>
+												Фиксируем понятный ориентир по цене
+											</p>
+										</div>
+									</div>
+									<div class="block-steps-center__card">
+										<div class="block-steps-center__icon">
+											<svg aria-hidden="true" width="42" height="42">
+												<use xlink:href="img/sprite.svg#check1"></use>
+											</svg>
+										</div>
+										<div class="block-steps-center__titles">
+											<div class="block-steps-center__title">
+												Фиксируем решения
+											</div>
+											<p>
+												Соголасуем материалы, смету и этапы заранее
+											</p>
+										</div>
+									</div>
+									<div class="block-steps-center__card">
+										<div class="block-steps-center__icon">
+											<svg aria-hidden="true" width="48" height="48">
+												<use xlink:href="img/sprite.svg#stages"></use>
+											</svg>
+										</div>
+										<div class="block-steps-center__titles">
+											<div class="block-steps-center__title">
+												Строим по этапам
+											</div>
+											<p>
+												Показываем результат каждого этапа
+											</p>
+										</div>
+									</div>
+									<div class="block-steps-center__card">
+										<div class="block-steps-center__icon">
+											<svg aria-hidden="true" width="48" height="48">
+												<use xlink:href="img/sprite.svg#progress"></use>
+											</svg>
+										</div>
+										<div class="block-steps-center__titles">
+											<div class="block-steps-center__title">
+												Показываем ход работ
+											</div>
+											<p>
+												Вы видите, как продвигается стройка
+											</p>
+										</div>
+									</div>
+									<div class="block-steps-center__card card-last">
+										<div class="block-steps-center__icon">
+											<svg aria-hidden="true" width="48" height="47">
+												<use xlink:href="img/sprite.svg#home"></use>
+											</svg>
+										</div>
+										<div class="block-steps-center__titles">
+											<div class="block-steps-center__title">
+												Ваш готовый дом
+											</div>
+											<p>
+												Дом готов, ключи у вас
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="block-steps__text">
+								<div class="icon-check">
+									<svg aria-hidden="true" width="16" height="14">
+										<use xlink:href="img/sprite.svg#check2"></use>
+									</svg>
+								</div>
+								<p>
+									Вы не теряетесь в стройке: на каждом этапе понятно, <span>что уже сделано, что
+										дальше и
+										за что
+										вы платите</span>
+								</p>
+							</div>
+							<div class="block-steps-bottom">
+								<div class="block-steps-bottom__arrow">
+									<svg aria-hidden="true" width="54" height="90">
+										<use xlink:href="img/sprite.svg#arrow2"></use>
+									</svg>
+								</div>
+								<div class="block-steps-bottom__text">
+									<div class="block-steps-bottom__title">
+										Рассчитайте свой дом за 5 вопросов
+									</div>
+									<p>
+										и получите понятный первый шаг вместо догадок
+									</p>
+								</div>
+								<div class="block-steps-bottom__buttons">
+									<a href="./" class="btn btn-big">Рассчитать мой дом за 5 вопросов</a>
+									<div class="block-steps-bottom__time">
+										<img loading="lazy" src="img/icons/time2.svg" alt="">
+										<p>
+											Это займет всего
+											1-2 минуты
+										</p>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -510,7 +1670,9 @@
 									<button type="button" data-spoller class="spollers-questions__button">
 										<span class="spollers-questions__titles">
 											<span class="spollers-questions__icon">
-
+												<svg aria-hidden="true" width="60" height="60">
+													<use xlink:href="img/sprite.svg#money"></use>
+												</svg>
 											</span>
 											<span class="spollers-questions__title">
 												Может ли стоимость вырасти уже в процессе строительства?
@@ -530,6 +1692,556 @@
 												работ — тогда мы заранее считаем разницу и согласуем её до выполнения
 											</p>
 										</div>
+									</div>
+								</div>
+								<div class="spollers-questions__item">
+									<button type="button" data-spoller class="spollers-questions__button">
+										<span class="spollers-questions__titles">
+											<span class="spollers-questions__icon">
+												<svg aria-hidden="true" width="60" height="60">
+													<use xlink:href="img/sprite.svg#calculate"></use>
+												</svg>
+											</span>
+											<span class="spollers-questions__title">
+												Как понять,
+												во сколько реально
+												обойдётся дом?
+											</span>
+										</span>
+										<span class="spollers-questions__arrow">
+											<svg aria-hidden="true" width="10" height="19">
+												<use xlink:href="img/sprite.svg#arrow1"></use>
+											</svg>
+										</span>
+									</button>
+									<div class="spollers-questions__body">
+										<div class="spollers-questions__text">
+											<p>
+												Мы считаем стоимость не “в среднем по рынку”, а под ваши вводные: участок,
+												площадь, этажность, материалы и пожелпния по планировке. В итоге вы
+												получаете понятный ориентир по бюджету до начала стройки
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="spollers-questions__item">
+									<button type="button" data-spoller class="spollers-questions__button">
+										<span class="spollers-questions__titles">
+											<span class="spollers-questions__icon">
+												<svg aria-hidden="true" width="60" height="42">
+													<use xlink:href="img/sprite.svg#helmet"></use>
+												</svg>
+											</span>
+											<span class="spollers-questions__title">
+												Кто будет
+												контролировать
+												стройку на объекте
+											</span>
+										</span>
+										<span class="spollers-questions__arrow">
+											<svg aria-hidden="true" width="10" height="19">
+												<use xlink:href="img/sprite.svg#arrow1"></use>
+											</svg>
+										</span>
+									</button>
+									<div class="spollers-questions__body">
+										<div class="spollers-questions__text">
+											<p>
+												На объекте работает команда и прораб, а ключевые этапы Дмитрий контролирует
+												лично - от скрытых работ до приёмки. У вас всегда есть человек, который
+												отвечает за результат
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="spollers-questions__item">
+									<button type="button" data-spoller class="spollers-questions__button">
+										<span class="spollers-questions__titles">
+											<span class="spollers-questions__icon">
+												<svg aria-hidden="true" width="60" height="60">
+													<use xlink:href="img/sprite.svg#wallet"></use>
+												</svg>
+											</span>
+											<span class="spollers-questions__title">
+												Как проходит оплата?
+											</span>
+										</span>
+										<span class="spollers-questions__arrow">
+											<svg aria-hidden="true" width="10" height="19">
+												<use xlink:href="img/sprite.svg#arrow1"></use>
+											</svg>
+										</span>
+									</button>
+									<div class="spollers-questions__body">
+										<div class="spollers-questions__text">
+											<p>
+												Оплата привязана к выполненным этапам работ. Вы платите за реальный
+												результат, а не отдаёте деньги вперед за обещания
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="spollers-questions__item">
+									<button type="button" data-spoller class="spollers-questions__button">
+										<span class="spollers-questions__titles">
+											<span class="spollers-questions__icon">
+												<svg aria-hidden="true" width="60" height="59">
+													<use xlink:href="img/sprite.svg#home"></use>
+												</svg>
+											</span>
+											<span class="spollers-questions__title">
+												Можно ли посмотреть дама,
+												которые вы уже построили?
+											</span>
+										</span>
+										<span class="spollers-questions__arrow">
+											<svg aria-hidden="true" width="10" height="19">
+												<use xlink:href="img/sprite.svg#arrow1"></use>
+											</svg>
+										</span>
+									</button>
+									<div class="spollers-questions__body">
+										<div class="spollers-questions__text">
+											<p>
+												Да. По согласованию покажем построенные дома или подробные материалы по
+												реальным объектам: фото, планировки и результат строительства
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="spollers-questions__item">
+									<button type="button" data-spoller class="spollers-questions__button">
+										<span class="spollers-questions__titles">
+											<span class="spollers-questions__icon">
+												<svg aria-hidden="true" width="60" height="60">
+													<use xlink:href="img/sprite.svg#check1"></use>
+												</svg>
+											</span>
+											<span class="spollers-questions__title">
+												Как понять, что стройка
+												идёт как надо, если я
+												не строитель?
+											</span>
+										</span>
+										<span class="spollers-questions__arrow">
+											<svg aria-hidden="true" width="10" height="19">
+												<use xlink:href="img/sprite.svg#arrow1"></use>
+											</svg>
+										</span>
+									</button>
+									<div class="spollers-questions__body">
+										<div class="spollers-questions__text">
+											<p>
+												Вам не нужно разбираться в каждом строительном узле. Мы показываем ход
+												работ, объясняем, что уже сделано, что проверяется на этапе и за что
+												отвечает команда. Ключевые моменты контролирует Дмитрий лично
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="block-quiz block-quiz2">
+					<div class="container">
+						<img loading="lazy" src="img/image24.webp" alt="" class="block-quiz__bg1">
+						<div class="block-quiz__contents">
+							<div class="block-quiz__content">
+								<div class="block-quiz__body">
+									<div class="heading-complex">
+										<h2 class="title2">
+											Сколько будет стоить дом для вашей семьи?
+										</h2>
+										<p>
+											Ответьте на 5 протых вопросов — и получите понятный ориентир по стоиомсти
+											строительства вашего дома
+										</p>
+										<div class="heading-complex__line"></div>
+									</div>
+									<form data-ajax action="quiz-handler2.php" method="POST" data-popup-message="#thanks" class="block-quiz-steps">
+										<div class="block-quiz-steps__nav">
+											<div class="block-quiz-steps__descr">
+												<div class="block-quiz-steps__questions-text">
+													Вопрос <span>1</span> из 4
+												</div>
+											</div>
+											<div class="block-quiz-steps__pagination"></div>
+										</div>
+										<div class="block-quiz-steps__slider swiper">
+											<div class="block-quiz-steps__wrapper swiper-wrapper">
+												<div class="block-quiz-steps__slide swiper-slide">
+													<div class="block-quiz-steps__item">
+														<div class="block-quiz-steps__titles">
+															<div class="block-quiz-steps__title">
+																Какая площадь дома вам нужна?
+															</div>
+															<p>
+																Не знаете точную площадь? Выберите примерно — дальше
+																подскажем
+															</p>
+														</div>
+														<div class="options3">
+															<label class="options3__item">
+																<input hidden class="options3__input" type="radio" value="до 120 м2" name="size">
+																<span class="options3__label">
+																	<span class="options3__check">
+																		<svg aria-hidden="true" width="8" height="8">
+																			<use xlink:href="img/sprite.svg#check2"></use>
+																		</svg>
+																	</span>
+																	<span class="options3__icon">
+																		<svg aria-hidden="true" width="24" height="24">
+																			<use xlink:href="img/sprite.svg#area"></use>
+																		</svg>
+																	</span>
+																	<span class="options3__text">до 120 м2</span>
+																</span>
+															</label>
+															<label class="options3__item">
+																<input hidden class="options3__input" type="radio" value="120-180 м2" name="size">
+																<span class="options3__label">
+																	<span class="options3__check">
+																		<svg aria-hidden="true" width="8" height="8">
+																			<use xlink:href="img/sprite.svg#check2"></use>
+																		</svg>
+																	</span>
+																	<span class="options3__icon">
+																		<svg aria-hidden="true" width="24" height="24">
+																			<use xlink:href="img/sprite.svg#area"></use>
+																		</svg>
+																	</span>
+																	<span class="options3__text">120-180 м2</span>
+																</span>
+															</label>
+															<label class="options3__item">
+																<input hidden class="options3__input" type="radio" value="180-250 м2" name="size">
+																<span class="options3__label">
+																	<span class="options3__check">
+																		<svg aria-hidden="true" width="8" height="8">
+																			<use xlink:href="img/sprite.svg#check2"></use>
+																		</svg>
+																	</span>
+																	<span class="options3__icon">
+																		<svg aria-hidden="true" width="24" height="24">
+																			<use xlink:href="img/sprite.svg#area"></use>
+																		</svg>
+																	</span>
+																	<span class="options3__text">180-250 м2</span>
+																</span>
+															</label>
+															<label class="options3__item">
+																<input hidden class="options3__input" type="radio" value="более 250 м2" name="size">
+																<span class="options3__label">
+																	<span class="options3__check">
+																		<svg aria-hidden="true" width="8" height="8">
+																			<use xlink:href="img/sprite.svg#check2"></use>
+																		</svg>
+																	</span>
+																	<span class="options3__icon">
+																		<svg aria-hidden="true" width="24" height="24">
+																			<use xlink:href="img/sprite.svg#area"></use>
+																		</svg>
+																	</span>
+																	<span class="options3__text">более 250 м2</span>
+																</span>
+															</label>
+															<label class="options3__item">
+																<input hidden class="options3__input" type="radio" value="Не знаю / Хочу помощь" name="size">
+																<span class="options3__label">
+																	<span class="options3__check">
+																		<svg aria-hidden="true" width="8" height="8">
+																			<use xlink:href="img/sprite.svg#check2"></use>
+																		</svg>
+																	</span>
+																	<span class="options3__icon">
+																		<svg aria-hidden="true" width="24" height="24">
+																			<use xlink:href="img/sprite.svg#call"></use>
+																		</svg>
+																	</span>
+																	<span class="options3__text">Не знаю / Хочу
+																		помощь</span>
+																</span>
+															</label>
+														</div>
+														<div class="block-quiz-steps__bottom">
+															<button type="button" class="btn btn-big btn-next">
+																<span>Продолжить расчет</span>
+																<svg aria-hidden="true" width="6" height="11">
+																	<use xlink:href="img/sprite.svg#arrow1"></use>
+																</svg>
+															</button>
+															<div class="block-quiz-steps__time2">
+																<span>Это займет всего 1-2 минуты</span>
+															</div>
+															<div class="block-quiz-steps__phone">
+																<svg aria-hidden="true" width="19" height="19">
+																	<use xlink:href="img/sprite.svg#phone"></use>
+																</svg>
+																<p>
+																	Хотите сразу обсудить ваш дом? Позвоните: <a href="tel:8900
+                                                                3333838">8 900
+																		333-38-38</a>
+																</p>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="block-quiz-steps__slide swiper-slide">
+													<div class="block-quiz-steps__item">
+														<div class="block-quiz-steps__titles">
+															<div class="block-quiz-steps__title">
+																Какая нужна площадь дома?
+															</div>
+														</div>
+														<div class="options2">
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="от 80 м2 до 100 м2" name="size">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">от 80 м2 до 100 м2</span>
+																</span>
+															</label>
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="от 100 м2 до 130 м2" name="size">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">от 100 м2 до 130 м2</span>
+																</span>
+															</label>
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="от 130 м2 до 160 м2" name="size">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">от 130 м2 до 160 м2</span>
+																</span>
+															</label>
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="от 160 м2 до 200 м2" name="size">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">от 160 м2 до 200 м2</span>
+																</span>
+															</label>
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="больше 200 м2" name="size">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">больше 200 м2</span>
+																</span>
+															</label>
+														</div>
+													</div>
+													<div class="block-quiz-steps__buttons">
+														<button type="button" class="btn btn-border btn-big btn-back">
+															<svg style="transform:rotate(-180deg)" aria-hidden="true" width="6" height="11">
+																<use xlink:href="img/sprite.svg#arrow1"></use>
+															</svg>
+															<span>Назад</span>
+														</button>
+														<button type="button" class="btn btn-big btn-next">
+															<span>Далее</span>
+															<svg aria-hidden="true" width="6" height="11">
+																<use xlink:href="img/sprite.svg#arrow1"></use>
+															</svg>
+														</button>
+													</div>
+												</div>
+												<div class="block-quiz-steps__slide swiper-slide">
+													<div class="block-quiz-steps__item">
+														<div class="block-quiz-steps__titles">
+															<div class="block-quiz-steps__title">
+																Есть ли у Вас участок?
+															</div>
+														</div>
+														<div class="options2">
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="Да, есть свой участок" name="facade">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">Да, есть свой
+																		участок</span>
+																</span>
+															</label>
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="Участок нашли, но еще не купили" name="facade">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">Участок нашли, но еще не
+																		купили</span>
+																</span>
+															</label>
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="Нет, участок еще не выбран" name="facade">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">Нет, участок еще не
+																		выбран</span>
+																</span>
+															</label>
+														</div>
+													</div>
+													<div class="block-quiz-steps__buttons">
+														<button type="button" class="btn btn-border btn-big btn-back">
+															<svg style="transform:rotate(-180deg)" aria-hidden="true" width="6" height="11">
+																<use xlink:href="img/sprite.svg#arrow1"></use>
+															</svg>
+															<span>Назад</span>
+														</button>
+														<button type="button" class="btn btn-big btn-next">
+															<span>Далее</span>
+															<svg aria-hidden="true" width="6" height="11">
+																<use xlink:href="img/sprite.svg#arrow1"></use>
+															</svg>
+														</button>
+													</div>
+												</div>
+												<div class="block-quiz-steps__slide swiper-slide">
+													<div class="block-quiz-steps__item">
+														<div class="block-quiz-steps__titles">
+															<div class="block-quiz-steps__title">
+																Сколько этажей хотите?
+															</div>
+														</div>
+														<div class="options2">
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="1" name="telegram">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">1</span>
+																</span>
+															</label>
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="2" name="telegram">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">2</span>
+																</span>
+															</label>
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="3" name="telegram">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">3</span>
+																</span>
+															</label>
+														</div>
+													</div>
+													<div class="block-quiz-steps__buttons">
+														<button type="button" class="btn btn-border btn-big btn-back">
+															<svg style="transform:rotate(-180deg)" aria-hidden="true" width="6" height="11">
+																<use xlink:href="img/sprite.svg#arrow1"></use>
+															</svg>
+															<span>Назад</span>
+														</button>
+														<button type="button" class="btn btn-big btn-next">
+															<span>Далее</span>
+															<svg aria-hidden="true" width="6" height="11">
+																<use xlink:href="img/sprite.svg#arrow1"></use>
+															</svg>
+														</button>
+													</div>
+												</div>
+												<div class="block-quiz-steps__slide swiper-slide">
+													<div class="block-quiz-steps__item">
+														<div class="block-quiz-steps__titles">
+															<div class="block-quiz-steps__title">
+																Сколько этажей хотите?
+															</div>
+														</div>
+														<div class="options2">
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="Наличные средства" name="max_name">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">Наличные средства</span>
+																</span>
+															</label>
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="Безналичный расчет" name="max_name">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">Безналичный расчет</span>
+																</span>
+															</label>
+															<label class="options2__item">
+																<input hidden class="options2__input" type="radio" value="Ипотека" name="max_name">
+																<span class="options2__label">
+																	<span class="options2__icon"></span>
+																	<span class="options2__text">Ипотека</span>
+																</span>
+															</label>
+														</div>
+													</div>
+													<div class="block-quiz-steps__buttons">
+														<button type="button" class="btn btn-border btn-big btn-back">
+															<svg style="transform:rotate(-180deg)" aria-hidden="true" width="6" height="11">
+																<use xlink:href="img/sprite.svg#arrow1"></use>
+															</svg>
+															<span>Назад</span>
+														</button>
+														<button type="submit" class="btn btn-big btn-send">
+															<span>Отправить</span>
+															<svg aria-hidden="true" width="6" height="11">
+																<use xlink:href="img/sprite.svg#arrow1"></use>
+															</svg>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+								<div data-da=".block-quiz2 .block-quiz__body, 992, 1" class="block-quiz-examples">
+									<div class="block-quiz-examples__title">
+										Пример расчета
+									</div>
+									<img loading="lazy" src="img/image25.webp" alt="" class="block-quiz-examples__pic1">
+									<div class="block-quiz-examples__total">
+										<div class="block-quiz-examples__price-title">
+											Ориентир стоимости
+										</div>
+										<div class="block-quiz-examples__price">
+											от ___ до ___млн ₽
+										</div>
+									</div>
+									<div class="block-quiz-examples__text">
+										<span>Пожелания</span>
+										<p>
+											Большая кухня-гостинная с видом на участок, отдельная комната для каждого члена
+											семьи, гараж
+										</p>
+									</div>
+									<div class="block-descr-list">
+										<ul>
+											<li>
+												<svg aria-hidden="true" width="30" height="30">
+													<use xlink:href="img/sprite.svg#area"></use>
+												</svg>
+												<span>Площадь дома — 180 м2</span>
+											</li>
+											<li>
+												<svg aria-hidden="true" width="30" height="30">
+													<use xlink:href="img/sprite.svg#bricks"></use>
+												</svg>
+												<span>Материал стен — кирпич</span>
+											</li>
+											<li>
+												<svg aria-hidden="true" width="30" height="30">
+													<use xlink:href="img/sprite.svg#calendar"></use>
+												</svg>
+												<span>Срок строительства — 90 дней</span>
+											</li>
+										</ul>
+									</div>
+									<div class="block-quiz-examples__bottom">
+										<svg aria-hidden="true" width="30" height="30">
+											<use xlink:href="img/sprite.svg#edit"></use>
+										</svg>
+										<p>
+											Точная смета — после уточнения проекта и участка
+										</p>
 									</div>
 								</div>
 							</div>
